@@ -24,7 +24,7 @@ class Acervo:
         """Busca livros pelo nome do autor."""
         return [
             i for i in self.livros if autor.lower() in i.autor.lower()
-        ]  # BUG: busca diferencia maiusculas/minusculas
+        ]  # BUG: CORRIGIDO!
 
     def livros_disponiveis(self):
         """Retorna lista de livros disponiveis para emprestimo."""
