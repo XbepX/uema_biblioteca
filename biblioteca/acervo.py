@@ -8,22 +8,24 @@ class Acervo:
     def adicionar_livro(self, livro):
         """Adiciona um livro ao acervo."""
         self.livros.append(livro)
-    def total_livros(self):                      # BUG-ESTILO: falta linha em branco antes deste metodo (E301)
+    
+    def total_livros(self):                      # BUG-ESTILO: CORRIGIDO!
         """Retorna o total de livros no acervo."""
         return len(self.livros)
 
     def buscar_por_titulo(self, titulo):
-        """Busca livros pelo titulo (sem diferenciar maiusculas/minusculas)."""
-        return [l for l in self.livros if titulo.lower() in l.titulo.lower()]
+        """Busca livros pelo titulo 
+           (sem diferenciar maiusculas/minusculas)."""
+        return [i for i in self.livros if titulo.lower() in i.titulo.lower()]  # Mudança da variável de 'l' para 'i'.
 
     def buscar_por_autor(self, autor):
         """Busca livros pelo nome do autor."""
-        return [l for l in self.livros if autor in l.autor]  # BUG: busca diferencia maiusculas/minusculas
+        return [i for i in self.livros if autor.lower() in i.autor.lower()]  # BUG: busca diferencia maiusculas/minusculas
 
     def livros_disponiveis(self):
         """Retorna lista de livros disponiveis para emprestimo."""
-        return [l for l in self.livros if l.disponivel]
+        return [i for i in self.livros if i.disponivel]
 
     def livros_emprestados(self):
         """Retorna lista de livros atualmente emprestados."""
-        return [l for l in self.livros if not l.disponivel]
+        return [i for i in self.livros if not i.disponivel]
