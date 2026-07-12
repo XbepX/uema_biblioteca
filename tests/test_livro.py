@@ -1,7 +1,6 @@
 import pytest
 from biblioteca.livro import Livro
 
-
 # ── Testes existentes ─────────────────────────────────────────────────────
 
 def test_criar_livro():
@@ -29,3 +28,17 @@ def test_emprestar_livro_ja_emprestado_levanta_erro():
 #   devolver() — livro emprestado (deve funcionar)
 #   devolver() — livro disponivel (deve levantar ValueError)
 #   __str__()  — verificar o formato da string retornada
+
+
+#   devolver() — livro emprestado (deve funcionar)
+def test_devolver_livro_emprestado():
+    livro = Livro("O Cortico", "Azevedo", "978-85-001-0001-1")
+    livro.emprestar()
+    livro.devolver()
+    assert livro.disponivel is True
+
+#   devolver() — livro disponivel (deve levantar ValueError)
+def test_devolver_livro_disponivel_levanta_erro():
+    livro = Livro("Memorias Postumas", "Machado de Assis", "978-85-001-0002-2")
+    with pytest.raises(ValueError):
+        livro.devolver()
